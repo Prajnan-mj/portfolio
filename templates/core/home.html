@@ -118,29 +118,9 @@
 </section>
 {% endif %}
 
-<!-- ============ 05 Writing ============ -->
-{% if posts %}
-<section class="section container" id="writing">
-  <div class="mono-label section__label reveal">05 — Writing</div>
-  <div class="stagger">
-    {% for post in posts %}
-    <article class="row row--post reveal">
-      <div class="row__side mono-label">{{ post.published_at|date:"M Y" }}</div>
-      <div>
-        <h3 class="post__title serif"><a href="{{ post.get_absolute_url }}">{{ post.title }}<span class="project__arrow">→</span></a></h3>
-        {% if post.excerpt %}<p class="project__desc">{{ post.excerpt }}</p>{% endif %}
-        <span class="mono-label post__meta">{{ post.reading_minutes }} min read</span>
-      </div>
-    </article>
-    {% endfor %}
-  </div>
-  <a class="text-link section__more reveal" href="{% url 'blog_list' %}">All posts</a>
-</section>
-{% endif %}
-
-<!-- ============ 06 Contact ============ -->
+<!-- ============ 05 Contact ============ -->
 <section class="section section--contact container" id="contact">
-  <div class="mono-label section__label reveal">06 — Contact</div>
+  <div class="mono-label section__label reveal">05 — Contact</div>
   <h2 class="contact__title serif reveal">Let's build something.</h2>
   <p class="contact__sub reveal">{{ profile.availability|default:"Open to roles and collaborations in applied AI and full-stack engineering." }}</p>
 

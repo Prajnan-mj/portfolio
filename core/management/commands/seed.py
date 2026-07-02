@@ -24,6 +24,21 @@ class Command(BaseCommand):
 
         projects = [
             dict(
+                title="Producty — AI productivity tool",
+                tag="Applied AI · 2025",
+                description=(
+                    "Task management, calendar sync, habit tracking and highly "
+                    "stylized notes, with an AI assistant that plans your day, "
+                    "analyzes documents and drafts emails. Built with FastAPI, "
+                    "React, NVIDIA NIM (LLaMA 3.3 70B) and PostgreSQL."
+                ),
+                stack="FastAPI, React 19, NVIDIA NIM, LLaMA 3.3, PostgreSQL, Docker",
+                github_url="https://github.com/Prajnan-mj/Producty-AI-Based-Productivity-tool",
+                live_url="https://producty-web.onrender.com",
+                image_static="img/projects/producty.webp",
+                order=1,
+            ),
+            dict(
                 title="Traffic Violation Detector",
                 tag="Computer vision · 2025",
                 description=(
@@ -37,21 +52,6 @@ class Command(BaseCommand):
                 stack="YOLOv8, Python, OpenCV, OCR, Streamlit, Docker",
                 github_url="https://github.com/Prajnan-mj/Traffic-Violation-Detector",
                 image_static="img/projects/traffic.webp",
-                order=1,
-            ),
-            dict(
-                title="Producty — AI productivity tool",
-                tag="Applied AI · 2025",
-                description=(
-                    "Task management, calendar sync, habit tracking and highly "
-                    "stylized notes, with an AI assistant that plans your day, "
-                    "analyzes documents and drafts emails. Built with FastAPI, "
-                    "React, NVIDIA NIM (LLaMA 3.3 70B) and PostgreSQL."
-                ),
-                stack="FastAPI, React 19, NVIDIA NIM, LLaMA 3.3, PostgreSQL, Docker",
-                github_url="https://github.com/Prajnan-mj/Producty-AI-Based-Productivity-tool",
-                live_url="https://producty-web.onrender.com",
-                image_static="img/projects/producty.webp",
                 order=2,
             ),
         ]
@@ -82,7 +82,7 @@ class Command(BaseCommand):
             dict(
                 kind="education",
                 period="2025 — 2030",
-                title="MSc Mathematics (Integrated)",
+                title="MSc Mathematics",
                 organization="BITS Pilani, K K Birla Goa Campus",
                 description=(
                     "Five-year integrated Master of Science in Mathematics, "
