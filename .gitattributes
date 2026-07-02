@@ -1,0 +1,7 @@
+* text=auto
+*.sh text eol=lf
+*.py text
+*.html text
+*.css text
+*.js text
+*.webp binary
