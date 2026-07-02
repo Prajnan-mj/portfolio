@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} — {{ profile.name|default:"Prajnan MJ" }}{% endblock %}
+{% block meta_description %}{{ post.excerpt|default:post.title }}{% endblock %}
+{% block og_title %}{{ post.title }}{% endblock %}
+{% block og_description %}{{ post.excerpt|default:post.title }}{% endblock %}
+
+{% block content %}
+<article class="article container">
+  <header class="article__head">
+    <a class="text-link article__back anim-rise" style="--d:.05s" href="{% url 'blog_list' %}">← All posts</a>
+    <div class="mono-label section__label anim-rise" style="--d:.1s">{{ post.published_at|date:"F j, Y" }} · {{ post.reading_minutes }} min read</div>
+    <h1 class="article__title serif anim-rise" style="--d:.2s">{{ post.title }}</h1>
+    {% if post.excerpt %}<p class="article__excerpt anim-rise" style="--d:.35s">{{ post.excerpt }}</p>{% endif %}
+  </header>
+  <div class="article__body anim-rise" style="--d:.5s">
+    {{ post.body|linebreaks }}
+  </div>
+  <footer class="article__foot">
+    <a class="text-link" href="{% url 'blog_list' %}">← All posts</a>
+  </footer>
+</article>
+{% endblock %}

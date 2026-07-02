@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Writing — {{ profile.name|default:"Prajnan MJ" }}{% endblock %}
+{% block meta_description %}Notes on applied AI, computer vision and full-stack engineering by {{ profile.name|default:"Prajnan MJ" }}.{% endblock %}
+
+{% block content %}
+<section class="page-head container">
+  <div class="mono-label section__label anim-rise" style="--d:.05s">Writing</div>
+  <h1 class="page-head__title serif anim-rise" style="--d:.15s">Notes &amp; essays.</h1>
+  <p class="page-head__sub anim-rise" style="--d:.3s">Applied AI, computer vision, and the mathematics underneath.</p>
+</section>
+
+<section class="section section--flush container">
+  <div class="stagger">
+    {% for post in posts %}
+    <article class="row row--post reveal">
+      <div class="row__side mono-label">{{ post.published_at|date:"M j, Y" }}</div>
+      <div>
+        <h2 class="post__title serif"><a href="{{ post.get_absolute_url }}">{{ post.title }}<span class="project__arrow">→</span></a></h2>
+        {% if post.excerpt %}<p class="project__desc">{{ post.excerpt }}</p>{% endif %}
+        <span class="mono-label post__meta">{{ post.reading_minutes }} min read</span>
+      </div>
+    </article>
+    {% empty %}
+    <p class="project__desc">Nothing here yet — the first post is on its way.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

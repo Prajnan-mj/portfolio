@@ -1,0 +1,29 @@
+databases:
+  - name: portfolio-db
+    plan: free
+
+services:
+  - type: web
+    name: prajnan-portfolio
+    runtime: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: portfolio-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "false"
+      - key: WEB_CONCURRENCY
+        value: "4"
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+      # Set these two in the Render dashboard to auto-create your admin login:
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false

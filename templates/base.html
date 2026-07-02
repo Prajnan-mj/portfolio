@@ -1,0 +1,57 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ profile.name|default:"Prajnan MJ" }} — Applied AI · Full-stack engineering{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ profile.meta_description|default:'Prajnan MJ — software developer specializing in applied AI and full-stack engineering.' }}{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}{{ profile.name|default:'Prajnan MJ' }} — Applied AI · Full-stack engineering{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ profile.meta_description|default:'Applied AI and full-stack engineering.' }}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/projects/traffic.webp' %}">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F7F6F2'/%3E%3Cg fill='none' stroke='%231a1a1a' stroke-width='1.6' stroke-opacity='.6'%3E%3Cpath d='M18 41 L31 21 L46 37 L33 47 Z'/%3E%3Cpath d='M31 21 L33 47'/%3E%3C/g%3E%3Cg fill='%231a1a1a'%3E%3Ccircle cx='18' cy='41' r='4'/%3E%3Ccircle cx='31' cy='21' r='3'/%3E%3Ccircle cx='46' cy='37' r='4'/%3E%3Ccircle cx='33' cy='47' r='3'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {# Parallax neural-mesh background #}
+  {% firstof profile.background_theme 'a' as theme %}
+  <div class="bg" aria-hidden="true">
+    <img id="bg-strip" src="{% static 'img/strips/strip-'|add:theme|add:'.webp' %}" alt="" width="2560" height="8000">
+  </div>
+  <div class="page-fade page-fade--top" aria-hidden="true"></div>
+  <div class="page-fade page-fade--bottom" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="{% url 'home' %}">{{ profile.site_name|default:"prajnan.dev" }}</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="{% url 'home' %}#work">Work</a>
+        <a href="{% url 'home' %}#about">About</a>
+        <a href="{% url 'blog_list' %}">Writing</a>
+        <a href="{% url 'home' %}#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© {% now "Y" %} {{ profile.name|default:"Prajnan MJ" }} · background theme: neural mesh</span>
+      <span class="footer__links">
+        <a href="{{ profile.github_url|default:'https://github.com/Prajnan-mj' }}" rel="noopener" target="_blank">GitHub</a>
+        <a href="{{ profile.linkedin_url|default:'#' }}" rel="noopener" target="_blank">LinkedIn</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>
